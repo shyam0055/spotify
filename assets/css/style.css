@@ -4,20 +4,25 @@
   padding: 0;
 }
 
+
 body {
   background-color: black;
   color: white;
   font-family: Arial, sans-serif;
+  overflow: hidden;
 }
+
 
 /* Utility classes */
 .flex {
   display: flex;
 }
 
+
 .justi {
   justify-content: space-between;
 }
+
 
 /* Appbar */
 .appbar {
@@ -35,16 +40,19 @@ body {
   border-bottom: 1px solid #282828;
 }
 
+
 /* Left section */
 .appbar-left {
   display: flex;
   align-items: center;
 }
 
+
 .logo {
   height: 32px;
   width: auto;
 }
+
 
 /* Center section */
 .appbar-center {
@@ -55,6 +63,7 @@ body {
   max-width: 600px;
   margin: 0 32px;
 }
+
 
 .home-button {
   position: absolute;
@@ -72,11 +81,13 @@ body {
   transition: all 0.2s ease;
 }
 
+
 .home-button:hover {
   background-color: #383636;
   color: #ffffff;
   transform: scale(1.04);
 }
+
 
 .searchbar,
 .search-container {
@@ -84,6 +95,7 @@ body {
   flex: 1;
   max-width: 400px;
 }
+
 
 #searchbar {
   position: relative;
@@ -98,6 +110,7 @@ body {
   color: #ffffff;
   outline: none;
 
+
   transition: all 0.2s ease;
 }
 #searchbar:hover {
@@ -109,10 +122,12 @@ body {
   border: 1px solid #535353;
 }
 
+
 #searchbar::placeholder {
   color: #b3b3b3;
   text-align: left;
 }
+
 
 .search-button {
   position: absolute;
@@ -131,9 +146,11 @@ body {
   transition: color 0.2s ease;
 }
 
+
 .search-button:hover {
   color: #ffffff;
 }
+
 
 /* Right section */
 .appbar-right {
@@ -141,6 +158,7 @@ body {
   align-items: center;
   gap: 16px;
 }
+
 
 .browse-button {
   width: 48px;
@@ -156,17 +174,20 @@ body {
   transition: all 0.2s ease;
 }
 
+
 .browse-button:hover {
   background-color: #282828;
   color: #ffffff;
   transform: scale(1.04);
 }
 
+
 .user-options {
   display: flex;
   align-items: center;
   gap: 16px;
 }
+
 
 .nav-link {
   color: #b3b3b3;
@@ -176,14 +197,17 @@ body {
   transition: color 0.2s ease;
 }
 
+
 .nav-link:hover {
   color: #ffffff;
 }
+
 
 .separator {
   color: #ffffff;
   font-size: 14px;
 }
+
 
 .install-button {
   display: flex;
@@ -198,9 +222,11 @@ body {
   transition: color 0.2s ease;
 }
 
+
 .install-button:hover {
   color: #ffffff;
 }
+
 
 .signup-button {
   padding: 8px 32px;
@@ -215,10 +241,12 @@ body {
   transition: all 0.2s ease;
 }
 
+
 .signup-button:hover {
   color: #ffffff;
   transform: scale(1.04);
 }
+
 
 .login,
 .login-button {
@@ -234,11 +262,13 @@ body {
   transition: all 0.2s ease;
 }
 
+
 .login:hover,
 .login-button:hover {
   background-color: #f0f0f0;
   transform: scale(1.04);
 }
+
 
 /* Main container */
 .container {
@@ -246,20 +276,26 @@ body {
   padding-top: 64px;
   height: calc(100vh - 64px);
   display: flex;
+
+
 }
+
 
 /* Library */
 .library {
   background-color: rgb(22, 22, 22);
   height: calc(100vh - 64px);
-  width: 20vw;
+  width: 25%;
   min-height: 50%;
+  flex-shrink: 0;
+  position: sticky;
   display: flex;
   border-radius: 10px;
   flex-direction: column;
   justify-content: space-between; /* push footer to bottom */
   position: relative;
 }
+
 
 /* Library text */
 .library-text {
@@ -269,6 +305,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
 
 /* Add button */
 .add-btn {
@@ -281,9 +318,11 @@ body {
   transition: background-color 0.2s ease;
 }
 
+
 .add-btn:hover {
   background-color: #1a1a1a;
 }
+
 
 /* Footer */
 .footer {
@@ -293,10 +332,11 @@ body {
   padding: 20px;
   left: 2px;
   bottom: 2px;
-  background-color: transparent;
+  background-color: rgb(22, 22, 22);
   flex-shrink: 0;
   margin-top: auto; /* push to bottom */
 }
+
 
 /* Footer links */
 .footer-links {
@@ -308,6 +348,7 @@ body {
   position: relative;
 }
 
+
 .footer-links a {
   color: #cccccc;
   text-decoration: none;
@@ -315,9 +356,11 @@ body {
   transition: color 0.3s ease;
 }
 
+
 .footer-links a:hover {
   color: #ffffff;
 }
+
 
 .language-selector {
   display: inline-flex;
@@ -332,19 +375,22 @@ body {
   transition: border-color 0.3s ease;
 }
 
+
 .language-selector:hover {
   border-color: #777;
 }
+
 
 .language-selector::before {
   content: "🌐";
   margin-right: 8px;
 }
 
+
 /* Right content */
 .left-in {
   position: absolute;
-  width: 100%;
+  width: 90%;
   border-radius: 10px;
   height: calc(100vh - 64px);
   background-color: rgb(22, 22, 22);
@@ -358,16 +404,19 @@ body {
   margin-bottom: 16px;
 }
 
+
 .box h3 {
   font-size: 18px;
   margin-bottom: 8px;
 }
+
 
 .box p {
   font-size: 14px;
   color: #b3b3b3;
   margin-bottom: 16px;
 }
+
 
 .box button {
   padding: 8px 16px;
@@ -381,6 +430,7 @@ body {
   transition: all 0.2s ease;
 }
 
+
 .box button:hover {
   background-color: #f0f0f0;
   transform: scale(1.05);
@@ -388,11 +438,14 @@ body {
 .music {
   position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 75%;
+  overflow-y: hidden;
+  box-sizing: border-box;
   /* background-color: rgb(51, 49, 49); */
 }
 .trending {
-  margin: 10px;
+  /* margin: 10px; */
+  display: inline-block;
   gap: 10px;
   position: absolute;
   top: 20px;
@@ -417,7 +470,6 @@ body {
 .card {
   min-width: 200px; /* smaller card width */
   height: 250px;
-
   flex-shrink: 0; /* prevent shrinking */
   border-radius: 10px;
 }
@@ -431,7 +483,6 @@ body {
   min-width: 200px;
   height: 300px;
   border-radius: 10px;
-
   overflow: hidden;
   flex-shrink: 0;
   display: flex;
@@ -444,21 +495,25 @@ body {
   font-size: 18px;
 }
 .card:hover {
+  transform: scale(1.01);
   background-color: #282828;
 }
 
+
 .card img {
-  width: 95%;
+  width: 90%;
   margin: auto;
   margin-top: 10px;
   height: 90%;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px;
 }
+
 
 .card-info {
   padding: 10px;
 }
+
 
 .card-title {
   color: #ffffff;
@@ -470,6 +525,44 @@ body {
   transition: color 0.2s ease;
 }
 
+
 .card-title:hover {
   color: #1db954; /* Spotify green effect */
+}
+.trendingartist{
+  margin: 10px;
+}
+.profile {
+  display: flex;
+  margin: 20px;
+  padding: 5px;
+  width: 210px;
+  height: 3 00px;
+  
+}
+.profile img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile h2 {
+  color: white;
+  /* display: block; */
+  font-size: 30px;
+  margin-top: 10px;
+}
+.photo:hover{
+  background-color: #303030;
+  border-radius: 10px;
+  transform: scale(1.05);
+}
+.photo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+.photo img{
+  margin: 10px;
 }
