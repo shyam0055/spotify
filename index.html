@@ -6,6 +6,30 @@
     <title>Spotify-Web Player: Music for everyone</title>
     <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* Extra styling for cards */
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .card {
+        width: 160px;
+        text-align: center;
+      }
+      .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+      }
+      .card p {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #ccc;
+      }
+    </style>
   </head>
   <body>
     <!-- App Bar -->
@@ -48,7 +72,7 @@
           <a href="#" class="nav-link">Download</a>
           <span class="separator">|</span>
           <button class="install-button">Install App</button>
-          <a href="signup.html" class="signup-button">sign in</a>
+          <a href="signup.html" class="signup-button">Sign Up</a>
           <a href="login.html" class="login-button">Log in</a>
         </div>
       </div>
@@ -104,7 +128,93 @@
         </div>
       </div>
 
-      <!-- Right Section -->
+      <!-- Music Section -->
+      <div class="music">
+        <div class="trending">
+          <h1 class="trdnow">Trending Now</h1>
+          <div class="cards">
+            <div class="card">
+              <a href="assets/images/ashiq.png">
+                <img src="assets/images/ashiq.png" alt="Aashiqi 2" />
+              </a>
+              <h3>Aashiqui 2</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/coolie.png">
+                <img src="assets/images/coolie.png" alt="Coolie" />
+              </a>
+              <h3>Coolie</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/findingher.png">
+                <img src="assets/images/findingher.png" alt="Finding Her" />
+              </a>
+              <h3>Finding Her</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/jawani.png">
+                <img src="assets/images/jawani.png" alt="Jawani" />
+              </a>
+              <h3>Jawani</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/kiliye.png">
+                <img src="assets/images/kiliye.png" alt="Kiliye" />
+              </a>
+              <h3>Kiliye</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/ranjhan.png">
+                <img src="assets/images/ranjhan.png" alt="Ranjhan" />
+              </a>
+              <h3>Ranjhan</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/sanamterikasam.png">
+                <img
+                  src="assets/images/sanamterikasam.png"
+                  alt="Sanam Teri Kasam"
+                />
+              </a>
+              <h3>Sanam Teri Kasam</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/sundari.png">
+                <img src="assets/images/sundari.png" alt="Sundari" />
+              </a>
+              <h3>Sundari</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+
+            <div class="card">
+              <a href="assets/images/younggoat.png">
+                <img src="assets/images/younggoat.png" alt="Young Goat" />
+              </a>
+              <h3>Young Goat</h3>
+              <p><span>Various Artists</span></p>
+            </div>
+          </div>
+          <!-- Trending Artists Section -->   
+          <div class="trendingartist">
+           
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- container close -->
   </body>
 </html>
