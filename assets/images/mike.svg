@@ -1,0 +1,13 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Microphone capsule -->
+  <ellipse cx="40" cy="18" rx="12" ry="14" fill="white"/>
+  
+  <!-- Microphone body -->
+  <rect x="35" y="32" width="10" height="25" rx="2" fill="white"/>
+  
+  <!-- Base stand -->
+  <ellipse cx="40" cy="70" rx="20" ry="5" fill="white"/>
+  
+  <!-- Connection -->
+  <rect x="37" y="57" width="6" height="13" rx="1" fill="white"/>
+</svg>

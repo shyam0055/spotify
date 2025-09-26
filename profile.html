@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Spotify</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="profile-page">
+    <div class="profile-container">
+        <div class="profile-header-section">
+            <a href="dashboard.html" class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                Back to Dashboard
+            </a>
+            <h1>Your Profile</h1>
+        </div>
+        
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="profile-avatar-large" id="profileAvatarLarge"></div>
+                <h2 id="profileName">Loading...</h2>
+                <p id="profileEmail">Loading...</p>
+            </div>
+            
+            <div class="profile-details">
+                <h3>Profile Details</h3>
+                <div class="detail-item">
+                    <label>Full Name:</label>
+                    <span id="detailName">Loading...</span>
+                </div>
+                <div class="detail-item">
+                    <label>Email:</label>
+                    <span id="detailEmail">Loading...</span>
+                </div>
+                <div class="detail-item">
+                    <label>Date of Birth:</label>
+                    <span id="detailBirthdate">Loading...</span>
+                </div>
+                <div class="detail-item">
+                    <label>Gender:</label>
+                    <span id="detailGender">Loading...</span>
+                </div>
+                <div class="detail-item">
+                    <label>Member Since:</label>
+                    <span id="memberSince">Today</span>
+                </div>
+            </div>
+            
+            <div class="profile-actions">
+                <button class="edit-profile-btn" onclick="editProfile()">Edit Profile</button>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            loadProfileData();
+        };
+        
+        function loadProfileData() {
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (!isLoggedIn || !userData) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // Generate avatar
+            const initials = userData.fullName ? userData.fullName.split(' ').map(n => n[0]).join('').toUpperCase() : 'U';
+            const avatarColor = '#1db954';
+            
+            // Update profile elements
+            document.getElementById('profileName').textContent = userData.fullName || 'User';
+            document.getElementById('profileEmail').textContent = userData.email || '';
+            document.getElementById('detailName').textContent = userData.fullName || 'User';
+            document.getElementById('detailEmail').textContent = userData.email || '';
+            document.getElementById('detailBirthdate').textContent = userData.birthdate ? new Date(userData.birthdate).toLocaleDateString() : 'Not provided';
+            document.getElementById('detailGender').textContent = userData.gender ? userData.gender.charAt(0).toUpperCase() + userData.gender.slice(1) : 'Not provided';
+            
+            // Create large avatar
+            const avatar = document.getElementById('profileAvatarLarge');
+            avatar.style.backgroundColor = avatarColor;
+            avatar.style.color = 'white';
+            avatar.style.display = 'flex';
+            avatar.style.alignItems = 'center';
+            avatar.style.justifyContent = 'center';
+            avatar.style.fontWeight = 'bold';
+            avatar.style.fontSize = '48px';
+            avatar.textContent = initials;
+        }
+        
+        function editProfile() {
+            alert('Edit profile functionality would be implemented here!');
+        }
+        
+        function logout() {
+            localStorage.removeItem('userData');
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

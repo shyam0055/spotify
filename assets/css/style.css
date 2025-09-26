@@ -1,0 +1,1756 @@
+/* =============================================================================
+   SPOTIFY CLONE - MAIN STYLESHEET
+   =============================================================================
+   This CSS creates a modern Spotify-like interface with:
+   - Fixed header navigation with search functionality
+   - Responsive sidebar library
+   - Main content area with trending cards
+   - User profile dropdown system
+   - Authentication pages styling
+   - Mobile-responsive hamburger menu
+============================================================================= */
+
+/* RESET STYLES
+   ========================================================================= */
+/* Removes default browser margins and padding for consistent styling across all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* BODY BASE STYLES
+   ========================================================================= */
+/* Sets the foundation for the entire application:
+   - Black background creates the dark Spotify theme
+   - White text provides contrast
+   - Overflow hidden prevents scrollbars on main viewport
+   - Min dimensions ensure usability on small screens */
+body {
+  background-color: black; /* Creates the signature dark Spotify look */
+  color: white; /* Ensures text is visible on dark background */
+  font-family: Arial, sans-serif; /* Clean, readable typography */
+  overflow: hidden; /* Prevents main body scroll (handled by individual sections) */
+  min-width: 300px; /* Ensures app remains functional on very small screens */
+  min-height: 300px; /* Maintains minimum usable height */
+}
+
+/* UTILITY CLASSES
+   ========================================================================= */
+/* Reusable layout helpers that can be applied to any element */
+.flex {
+  display: flex; /* Enables flexbox layout for easy alignment */
+}
+
+.justi {
+  justify-content: space-between; /* Spreads child elements to opposite ends */
+}
+
+/* MAIN APPLICATION BAR
+   ========================================================================= */
+/* Fixed header that stays visible during scroll:
+   - Contains logo, search, and user navigation
+   - Z-index ensures it stays above all other content
+   - Border creates subtle separation from main content */
+.appbar {
+  position: fixed; /* Stays at top even when scrolling */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px; /* Standard header height for good proportion */
+  background-color: #000000; /* Matches body background */
+  display: flex;
+  align-items: center; /* Vertically centers all header content */
+  justify-content: space-between; /* Spreads logo, search, and user items */
+  padding: 0 24px; /* Adds breathing room on sides */
+  z-index: 1000; /* Ensures header appears above all other content */
+  border-bottom: 1px solid #282828; /* Subtle separator line */
+}
+
+/* APPBAR LEFT SECTION - LOGO AREA
+   ========================================================================= */
+/* Houses the Spotify logo with proper spacing and sizing */
+.appbar-left {
+  display: flex;
+  align-items: center; /* Vertically centers logo */
+  flex-shrink: 0; /* Prevents logo from shrinking on small screens */
+}
+
+.logo {
+  height: 32px; /* Optimal size for readability without overwhelming */
+  width: auto; /* Maintains aspect ratio */
+}
+
+/* APPBAR CENTER SECTION - NAVIGATION AND SEARCH
+   ========================================================================= */
+/* Contains home button and search functionality:
+   - Flex layout allows responsive sizing
+   - Max-width prevents search from becoming too wide on large screens */
+.appbar-center {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Consistent spacing between home button and search */
+  flex: 1; /* Takes available space between left and right sections */
+  max-width: 600px; /* Prevents excessive width on large screens */
+  margin: 0 32px; /* Breathing room from logo and user section */
+  position: relative;
+}
+
+/* HOME BUTTON STYLING
+   ========================================================================= */
+/* Circular button that provides quick access to home page:
+   - Round shape follows modern UI design patterns
+   - Hover effects provide visual feedback
+   - Consistent sizing for good touch targets */
+.home-button {
+  width: 48px; /* Large enough for easy clicking/tapping */
+  height: 48px;
+  border-radius: 50%; /* Creates perfect circle */
+  border: none;
+  background-color: #1a1a1a; /* Slightly lighter than background for definition */
+  color: #b3b3b3; /* Muted color for subtle appearance */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers icon perfectly */
+  cursor: pointer;
+  transition: all 0.2s ease; /* Smooth animation for all property changes */
+  text-decoration: none;
+  flex-shrink: 0; /* Maintains size on small screens */
+  z-index: 10;
+  position: relative;
+}
+
+/* Home button hover effects create engaging interaction */
+.home-button:hover {
+  background-color: #383636; /* Darker background on hover */
+  color: #ffffff; /* Full white for better visibility */
+  transform: scale(1.04); /* Subtle grow effect indicates interactivity */
+}
+
+/* Active state provides click feedback */
+.home-button:active {
+  transform: scale(0.98); /* Slight shrink simulates button press */
+}
+
+/* SEARCH FUNCTIONALITY
+   ========================================================================= */
+/* Container for search input and button with proper positioning */
+.search-container {
+  position: relative; /* Allows absolute positioning of search button inside */
+  flex: 1; /* Takes remaining available width */
+  max-width: 400px; /* Prevents search from becoming too wide */
+  margin-left: 16px; /* Space from home button */
+}
+
+/* Search input field with modern styling and interactions */
+#searchbar {
+  width: 100%; /* Full width of container */
+  height: 48px; /* Matches home button height for consistency */
+  border-radius: 24px; /* Pill shape follows modern design trends */
+  border: none;
+  padding: 0 48px 0 16px; /* Left padding for text, right for search icon */
+  font-size: 14px; /* Readable text size */
+  background-color: #1a1a1a; /* Consistent with other input elements */
+  color: #ffffff;
+  outline: none; /* Removes default browser focus outline */
+  transition: all 0.2s ease; /* Smooth transitions for all interactions */
+  position: relative;
+}
+
+/* Search hover effects enhance user experience */
+#searchbar:hover {
+  background-color: #413f3f; /* Lighter background indicates interactivity */
+  transform: scale(1.02); /* Subtle grow effect */
+}
+
+/* Focus state shows active input */
+#searchbar:focus {
+  background-color: #2a2a2a; /* Different color for focused state */
+  border: 1px solid #535353; /* Border highlights active field */
+}
+
+/* Placeholder text styling */
+#searchbar::placeholder {
+  color: #b3b3b3; /* Muted color distinguishes from actual input */
+  text-align: left;
+}
+
+/* Search button positioned inside input field */
+.search-button {
+  position: absolute;
+  right: 12px; /* Positioned inside search input */
+  top: 50%;
+  transform: translateY(-50%); /* Perfect vertical centering */
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #b3b3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease; /* Smooth color transition */
+  z-index: 5;
+}
+
+.search-button:hover {
+  color: #ffffff; /* Brightens on hover for feedback */
+}
+
+/* APPBAR RIGHT SECTION - USER CONTROLS
+   ========================================================================= */
+/* Contains user navigation, browse button, and authentication links */
+.appbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Consistent spacing between all elements */
+  flex-shrink: 0; /* Prevents shrinking on small screens */
+}
+
+/* Browse/Discovery button with consistent styling */
+.browse-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1a1a1a;
+  color: #b3b3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.browse-button:hover {
+  background-color: #282828; /* Consistent hover state */
+  color: #ffffff;
+  transform: scale(1.04); /* Matching hover animation */
+}
+
+/* USER NAVIGATION SECTION
+   ========================================================================= */
+/* Contains login, signup, and other user-related links */
+.user-options {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Standard navigation link styling */
+.nav-link {
+  color: #b3b3b3; /* Muted initial state */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600; /* Slightly bold for better readability */
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff; /* Full white on hover for clarity */
+}
+
+/* Visual separator between nav elements */
+.separator {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* Install app button with icon support */
+.install-button {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.install-button:hover {
+  color: #ffffff;
+}
+
+/* AUTHENTICATION BUTTONS
+   ========================================================================= */
+/* Signup button with transparent styling */
+.signup-button {
+  padding: 8px 32px; /* Comfortable padding for clicking */
+  border-radius: 24px; /* Pill shape */
+  border: none;
+  text-decoration: none;
+  background-color: transparent;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.signup-button:hover {
+  color: #ffffff;
+  transform: scale(1.04); /* Subtle growth indicates interactivity */
+}
+
+/* Login button with prominent white background */
+.login,
+.login-button {
+  padding: 12px 32px; /* Slightly larger padding for prominence */
+  border-radius: 24px;
+  border: none;
+  background-color: #ffffff; /* White background makes it stand out */
+  color: #000000; /* Black text for contrast on white */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700; /* Bold text emphasizes importance */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login:hover,
+.login-button:hover {
+  background-color: #f0f0f0; /* Slightly darker white on hover */
+  transform: scale(1.04);
+}
+
+/* MAIN CONTENT CONTAINER
+   ========================================================================= */
+/* Wrapper for all content below the header:
+   - Accounts for fixed header height
+   - Creates flex layout for sidebar and main content */
+.container {
+  position: relative;
+  padding-top: 64px; /* Compensates for fixed header height */
+  height: calc(100vh - 64px); /* Full viewport height minus header */
+  display: flex; /* Enables side-by-side layout of library and content */
+}
+
+/* LIBRARY SIDEBAR
+   ========================================================================= */
+/* Left sidebar containing user's music library:
+   - Fixed width for consistent layout
+   - Scrollable content area
+   - Sticky positioning for persistent visibility */
+.library {
+  background-color: rgb(22, 22, 22); /* Slightly different from main background */
+  height: calc(100vh - 64px); /* Full height minus header */
+  width: 25%; /* Fixed proportion of screen width */
+  min-height: 50%; /* Ensures minimum usable height */
+  flex-shrink: 0; /* Prevents shrinking when content is wide */
+  position: sticky; /* Stays in place during main content scroll */
+  display: flex;
+  border-radius: 10px; /* Rounded corners for modern look */
+  flex-direction: column;
+  justify-content: space-between; /* Spreads header and footer */
+  position: relative;
+}
+
+/* Library header with title and add button */
+.library-text {
+  font-size: 30px; /* Large text emphasizes section importance */
+  padding: 20px; /* Generous padding for visual breathing room */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Title on left, add button on right */
+}
+
+/* Add content button for library management */
+.add-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: #1a1a1a; /* Subtle background on hover */
+}
+
+/* LIBRARY FOOTER SECTION
+   ========================================================================= */
+/* Bottom section of library with legal links and language selector */
+.footer {
+  position: absolute;
+  border-radius: 10px;
+  width: 90%; /* Slightly narrower than container for visual balance */
+  padding: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: rgb(22, 22, 22);
+  flex-shrink: 0;
+  margin-top: auto; /* Pushes to bottom of container */
+}
+
+/* Footer navigation links layout */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 20px; /* Consistent spacing between links */
+  margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+}
+
+/* Footer link styling */
+.footer-links a {
+  color: #cccccc; /* Slightly brighter than muted text */
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff; /* Full brightness on hover */
+}
+
+/* Language selector with globe icon */
+.language-selector {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #555; /* Subtle border for definition */
+  border-radius: 20px; /* Pill shape */
+  padding: 8px 16px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.language-selector:hover {
+  border-color: #777; /* Brighter border on hover */
+}
+
+/* Globe icon added via CSS */
+.language-selector::before {
+  content: "🌐";
+  margin-right: 8px;
+}
+
+/* LIBRARY CONTENT BOXES
+   ========================================================================= */
+/* Information boxes within library for promotions/features */
+.left-in {
+  position: absolute;
+  width: 90%;
+  border-radius: 10px;
+  height: calc(100vh - 64px);
+  background-color: rgb(22, 22, 22);
+  padding: 20px;
+}
+
+/* Individual promotional/info boxes */
+.box {
+  background-color: #2b2a2ace; /* Semi-transparent overlay */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 16px; /* Spacing between multiple boxes */
+}
+
+.box h3 {
+  font-size: 18px;
+  margin-bottom: 8px; /* Space below headings */
+}
+
+.box p {
+  font-size: 14px;
+  color: #b3b3b3; /* Muted color for secondary text */
+  margin-bottom: 16px; /* Space before action button */
+}
+
+/* Call-to-action buttons in boxes */
+.box button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: #ffffff; /* White background for prominence */
+  color: #000000; /* Black text for contrast */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.box button:hover {
+  background-color: #f0f0f0; /* Slightly darker white on hover */
+  transform: scale(1.05); /* Growth effect indicates interactivity */
+}
+
+/* MAIN MUSIC CONTENT AREA
+   ========================================================================= */
+/* Right side content area displaying music, playlists, and trending content */
+.music {
+  position: relative;
+  height: 100vh;
+  width: 75%; /* Takes remaining width after library sidebar */
+  overflow-y: hidden; /* Prevents vertical scrolling in main container */
+  box-sizing: border-box;
+}
+
+/* TRENDING SECTION
+   ========================================================================= */
+/* Section displaying popular/trending music content */
+.trending {
+  display: inline-block;
+  gap: 10px;
+  position: absolute;
+  top: 20px; /* Positioned below any header content */
+  left: 70px; /* Offset from left edge for visual balance */
+  border-radius: 8px;
+  height: 300px; /* Fixed height for consistent layout */
+  width: 100%;
+}
+
+/* Trending section title */
+.trdnow {
+  font-size: 25px; /* Large title emphasizes section importance */
+  font-weight: 600; /* Semi-bold for visual hierarchy */
+  color: white;
+  margin: 20px; /* Generous margin for breathing room */
+  overflow-x: auto; /* Allows horizontal scroll if needed */
+  white-space: nowrap; /* Prevents title wrapping */
+}
+
+/* CONTENT CARDS LAYOUT
+   ========================================================================= */
+/* Container for music/playlist cards with horizontal scrolling */
+.cards {
+  display: flex;
+  gap: 20px; /* Consistent spacing between cards */
+  width: max-content; /* Allows horizontal overflow */
+  
+}
+
+/* Individual content card styling */
+.card {
+  min-width: 200px; /* Minimum width prevents overcrowding */
+  height: 300px; /* Fixed height for uniform appearance */
+  border-radius: 10px;
+  overflow: hidden; /* Hides any content that overflows card bounds */
+  flex-shrink: 0; /* Prevents cards from shrinking in flex layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
+  cursor: pointer; /* Indicates clickable content */
+}
+
+/* Card hover effects create engaging interaction */
+.card:hover {
+  transform: scale(1.01); /* Subtle growth draws attention */
+  background-color: #282828; /* Background change indicates interactivity */
+}
+
+/* Card image styling */
+.card img {
+  width: 90%; /* Slightly smaller than card for visual padding */
+  margin: auto;
+  margin-top: 10px;
+  height: 90%; /* Maintains aspect ratio within card */
+  object-fit: cover; /* Ensures proper image scaling */
+  border-radius: 5px;
+}
+
+/* Card text content area */
+.card-info {
+  padding: 10px; /* Internal spacing for text content */
+}
+
+/* Card title styling */
+.card-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px; /* Space below title */
+  transition: color 0.2s ease;
+}
+
+/* Card title hover effect */
+.card-title:hover {
+  color: #1db954; /* Spotify green for brand consistency */
+}
+
+.card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+}
+
+.card p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #ccc; /* Muted color for secondary information */
+}
+
+/* ARTIST PROFILE SECTION
+   ========================================================================= */
+/* Special layout for artist profiles with circular images */
+.trendingartist {
+  margin: 10px; /* Basic spacing from container edges */
+}
+
+.profile {
+  display: flex;
+  margin: 20px;
+  padding: 5px;
+  width: 210px; /* Fixed width for consistent layout */
+  height: 300px; /* Fixed height matches other content */
+}
+
+/* Artist profile image styling */
+.profile img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%; /* Creates circular image for artist photos */
+  object-fit: cover; /* Ensures proper image cropping */
+}
+
+.profile h2 {
+  color: white;
+  font-size: 30px; /* Large text for artist names */
+  margin-top: 10px; /* Space above artist name */
+}
+
+/* Photo container with hover effects */
+.photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.photo img {
+  margin: 10px;
+}
+
+/* Photo hover effects */
+.photo:hover {
+  background-color: #303030; /* Background change on hover */
+  border-radius: 10px;
+  transform: scale(1.05); /* Growth effect indicates interactivity */
+}
+
+/* MEDIA PLAYER BAR
+   ========================================================================= */
+/* Bottom player controls (currently basic implementation) */
+.playbar {
+  display: flex;
+  gap: 10%;
+  position: fixed; /* Stays at bottom of screen */
+  width: 74%; /* Matches main content width */
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #1b1b1b; /* Dark background for contrast */
+  bottom: 50px; /* Positioned above bottom edge */
+  margin: 10px;
+  border-radius: 5px;
+}
+.song-progress{
+  padding: auto;
+}
+.volume-control{
+  padding: auto;
+}
+/* Player control buttons */
+.playbuttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* Spacing between play controls */
+  /* margin-top: 8px; */
+}
+#playPauseBtn{
+  display: block;
+  background-color: rgb(2, 204, 2);
+  border-radius: 50%;
+  padding: 1%;
+  align-items: center;
+  justify-content: center;
+}
+/* USER PROFILE DROPDOWN SYSTEM
+   ========================================================================= */
+/* Profile section in main navigation */
+.profile-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.profile-dropdown {
+  position: relative;
+}
+
+/* Profile button that triggers dropdown menu */
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 24px; /* Pill shape */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #b3b3b3;
+}
+
+.profile-button:hover {
+  background-color: #1a1a1a; /* Background appears on hover */
+  color: #ffffff;
+}
+
+/* User avatar image */
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; /* Circular avatar */
+  background: #1db954; /* Spotify green fallback */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* User name display */
+.profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 120px; /* Prevents overly long names from breaking layout */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Shows ... for truncated text */
+  white-space: nowrap;
+}
+
+/* Dropdown arrow with rotation animation */
+.profile-arrow {
+  transition: transform 0.2s ease;
+}
+
+.profile-button:hover .profile-arrow {
+  transform: rotate(180deg); /* Arrow flips on hover */
+}
+
+/* PROFILE DROPDOWN MENU
+   ========================================================================= */
+/* Dropdown menu that appears when profile is clicked */
+.profile-menu {
+  position: absolute;
+  top: calc(100% + 8px); /* Positioned below profile button */
+  right: 0;
+  background-color: #282828; /* Dark background matches theme */
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  min-width: 220px;
+  opacity: 0; /* Hidden by default */
+  visibility: hidden;
+  transform: translateY(-10px); /* Slight upward offset */
+  transition: all 0.3s ease; /* Smooth show/hide animation */
+  z-index: 1001; /* Above other content */
+}
+
+/* Active state makes dropdown visible */
+.profile-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* Slides down into place */
+}
+
+/* Dropdown menu header with user info */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid #404040; /* Separator line */
+}
+
+/* Larger avatar in dropdown menu */
+.profile-menu-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1db954;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* User info text in dropdown */
+.profile-info h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.profile-info p {
+  color: #b3b3b3; /* Muted color for secondary info */
+  font-size: 12px;
+  margin: 0;
+}
+
+/* Visual divider in dropdown menu */
+.profile-divider {
+  height: 1px;
+  background-color: #404040;
+  margin: 8px 0;
+}
+
+/* Individual dropdown menu items */
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #b3b3b3;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.profile-menu-item:hover {
+  background-color: #404040; /* Background change on hover */
+  color: #ffffff;
+}
+
+/* Special styling for logout item */
+.profile-menu-item.logout {
+  color: #ff4444; /* Red color indicates destructive action */
+}
+
+.profile-menu-item.logout:hover {
+  background-color: #ff4444; /* Red background on hover */
+  color: #ffffff;
+}
+
+.profile-menu-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0; /* Prevents icon distortion */
+}
+
+/* MOBILE HAMBURGER MENU SYSTEM
+   ========================================================================= */
+/* Popup menu that appears on smaller screens */
+.popmenu {
+  display: none; /* Hidden by default */
+  position: fixed;
+  background-color: rgb(26, 26, 26);
+  height: 100vh;
+  right: -100%; /* Initially positioned off-screen */
+  width: 300px;
+  z-index: 9999; /* Above all other content */
+  top: 64px; /* Below header */
+  transition: right 0.3s ease; /* Smooth slide-in animation */
+  border-left: 1px solid #333;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+/* Active state slides menu into view */
+.popmenu.active {
+  display: block;
+  right: 0;
+}
+
+/* Menu content container */
+.men {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  gap: 20px;
+  z-index: 10000;
+}
+
+/* Mobile menu item styling */
+.men .nav-link,
+.men .install-button,
+.men .signup-button,
+.men .login-button {
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.men .nav-link:hover,
+.men .install-button:hover {
+  background-color: #333;
+  color: #ffffff;
+}
+
+.men .separator {
+  text-align: center;
+  color: #555;
+  margin: 10px 0;
+}
+
+/* Mobile menu toggle button (hamburger) */
+.menubar {
+  display: none; /* Hidden on desktop */
+}
+
+.menu-toggle {
+  font-size: 24px;
+  color: #b3b3b3;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  /* user-select: none; Prevents text selection */
+}
+
+.menu-toggle:hover {
+  color: #ffffff;
+  background-color: #333;
+}
+
+/* MOBILE USER INFO IN HAMBURGER MENU
+   ========================================================================= */
+/* User information displayed in mobile menu */
+.mobile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: #333;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.mobile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1db954;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.mobile-user-details h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.mobile-user-details p {
+  color: #b3b3b3;
+  font-size: 12px;
+  margin: 0;
+}
+
+.mobile-menu-divider {
+  height: 1px;
+  background-color: #404040;
+  margin: 12px 0;
+}
+
+/* Mobile logout styling */
+.logout-mobile {
+  color: #ff4444 !important;
+}
+
+.logout-mobile:hover {
+  color: #ffffff !important;
+  background-color: #ff4444 !important;
+}
+
+/* AUTHENTICATION PAGES STYLING
+   ========================================================================= */
+/* Full-screen auth pages with gradient background */
+.auth-page {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Blue gradient */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Auth form container with dark styling */
+.auth-container {
+  background: #121212; /* Dark background matches app theme */
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* Dramatic shadow for depth */
+}
+
+/* Auth page header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-logo {
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.auth-header h1 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3; /* Improved readability */
+}
+
+/* Auth form layout */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Consistent spacing between form elements */
+}
+
+/* Form input groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Form input styling */
+.form-group input {
+  padding: 14px 16px; /* Comfortable padding for typing */
+  border: 2px solid #333; /* Subtle border */
+  border-radius: 8px;
+  background: #181818; /* Dark input background */
+  color: #ffffff;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Input focus state */
+.form-group input:focus {
+  outline: none;
+  border-color: #1db954; /* Spotify green for focused inputs */
+}
+
+.form-group small {
+  color: #b3b3b3; /* Muted color for help text */
+  font-size: 12px;
+}
+
+/* Radio button groups */
+.radio-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+/* Radio and checkbox label styling */
+.radio-label,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  min-height: 44px; /* Touch-friendly size */
+}
+
+.radio-label input,
+.checkbox-label input {
+  width: auto;
+  margin: 0;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.checkbox-group {
+  margin: 10px 0;
+}
+
+/* Auth submit button */
+.auth-submit-btn {
+  background: #1db954; /* Spotify green */
+  color: #ffffff;
+  border: none;
+  border-radius: 25px; /* Pill shape */
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  min-height: 48px; /* Touch-friendly */
+  width: 100%;
+}
+
+.auth-submit-btn:hover {
+  background: #1ed760; /* Brighter green on hover */
+  transform: scale(1.02); /* Subtle growth */
+}
+
+/* Divider for social login section */
+.auth-divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.auth-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #333; /* Line across full width */
+}
+
+.auth-divider span {
+  background: #121212; /* Background color covers line */
+  padding: 0 20px;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+/* Social login buttons */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-btn {
+  padding: 12px 20px;
+  border: 2px solid #333;
+  border-radius: 25px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+}
+
+.social-btn:hover {
+  border-color: #1db954; /* Spotify green border */
+  background: rgba(29, 185, 84, 0.1); /* Subtle green background */
+}
+
+/* Auth page footer */
+.auth-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.auth-footer p,
+.forgot-password {
+  color: #b3b3b3;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.auth-footer a {
+  color: #1db954; /* Spotify green for links */
+  text-decoration: none;
+  min-height: 44px; /* Touch-friendly */
+  display: inline-block;
+  padding: 8px 4px;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* USER PROFILE PAGES
+   ========================================================================= */
+.profile-page {
+  background: #121212;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.profile-header-section {
+  margin-bottom: 40px;
+}
+
+/* Back button for navigation */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #b3b3b3;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+  padding: 8px;
+  min-height: 44px; /* Touch-friendly */
+  border-radius: 8px;
+}
+
+.back-button:hover {
+  color: #ffffff;
+  background-color: #333;
+}
+
+.profile-header-section h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.profile-content {
+  display: grid;
+  gap: 40px;
+}
+
+/* Profile card with user avatar and basic info */
+.profile-card {
+  text-align: center;
+  padding: 40px;
+  background: #181818;
+  border-radius: 16px;
+}
+
+.profile-avatar-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.profile-card h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.profile-card p {
+  color: #b3b3b3;
+  font-size: 16px;
+  margin: 0;
+  word-break: break-word; /* Handles long email addresses */
+}
+
+/* Detailed profile information section */
+.profile-details {
+  background: #181818;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.profile-details h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+}
+
+/* Individual detail items */
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #333; /* Subtle separator */
+  min-height: 44px;
+}
+
+.detail-item:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+.detail-item label {
+  font-weight: 600;
+  color: #b3b3b3;
+}
+
+.detail-item span {
+  color: #ffffff;
+  word-break: break-word;
+  text-align: right;
+}
+
+/* Profile action buttons */
+.profile-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.edit-profile-btn,
+.logout-btn {
+  padding: 14px 32px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  min-height: 48px; /* Touch-friendly */
+  min-width: 120px;
+}
+
+.edit-profile-btn {
+  background: #1db954; /* Spotify green */
+  color: #ffffff;
+}
+
+.edit-profile-btn:hover {
+  background: #1ed760;
+  transform: scale(1.02);
+}
+
+.logout-btn {
+  background: transparent;
+  color: #ff4444; /* Red for destructive action */
+  border: 2px solid #ff4444;
+}
+
+.logout-btn:hover {
+  background: #ff4444;
+  color: #ffffff;
+}
+
+/* RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================= */
+
+/* TABLET BREAKPOINT - 1400px and below
+   ========================================================================= */
+/* At this breakpoint, we switch to hamburger menu and hide some nav items */
+@media (max-width: 1400px) {
+  /* Hide desktop navigation items */
+  .nav-link,
+  .signup-button,
+  .login-button,
+  .separator,
+  .install-button {
+    display: none; /* These items move to hamburger menu */
+  }
+  
+  /* Hide desktop profile section */
+  .profile-section {
+    display: none;
+  }
+
+  /* Show hamburger menu button */
+  .menubar {
+    display: block;
+  }
+
+  /* Adjust header center section spacing */
+  .appbar-center {
+    margin: 0 20px;
+  }
+
+  /* Adjust popup menu width */
+  .popmenu {
+    width: 250px;
+  }
+  
+  /* Show mobile user info in hamburger menu */
+  .mobile-user-info {
+    display: flex;
+  }
+}
+
+/* MOBILE BREAKPOINT - 600px and below
+   ========================================================================= */
+/* Major layout changes for mobile devices */
+@media (max-width: 600px) {
+  /* Header adjustments for mobile */
+  .appbar {
+    padding: 0 15px; /* Reduced padding for smaller screens */
+  }
+
+  .appbar-center {
+    margin: 0 10px;
+    max-width: none;
+  }
+
+  /* Smaller home button for mobile */
+  .home-button {
+    width: 44px; /* Touch-friendly size */
+    height: 44px;
+  }
+
+  /* Smaller search bar for mobile */
+  #searchbar {
+    font-size: 12px;
+    height: 40px;
+    max-width: 250px; /* Prevents search from becoming too wide */
+  }
+
+  .search-button {
+    right: 8px;
+  }
+
+  /* Smaller logo for mobile */
+  .logo {
+    height: 28px;
+  }
+
+  /* Mobile hamburger menu button sizing */
+  .menu-toggle {
+    font-size: 20px;
+    padding: 8px;
+    min-width: 44px; /* Touch-friendly */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Narrower popup menu on mobile */
+  .popmenu {
+    width: 200px;
+  }
+
+  /* Mobile menu content adjustments */
+  .men {
+    padding: 20px 15px;
+    gap: 15px;
+  }
+
+  .men .nav-link,
+  .men .install-button,
+  .men .signup-button,
+  .men .login-button {
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+
+  /* Layout adjustments for main content */
+  .library {
+    width: 30%; /* Slightly wider library on mobile */
+  }
+
+  .music {
+    width: 70%; /* Correspondingly narrower music area */
+  }
+
+  /* Trending section adjustments */
+  .trending {
+    left: 20px; /* Less offset on mobile */
+  }
+
+  .trdnow {
+    font-size: 20px; /* Smaller trending title */
+    margin: 15px;
+  }
+
+  /* Smaller cards for mobile */
+  .card {
+    min-width: 150px;
+    height: 220px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+  }
+  
+  /* Mobile profile button adjustments */
+  .profile-button {
+    padding: 4px 8px;
+    gap: 6px;
+  }
+  
+  .profile-name {
+    display: none; /* Hide name on very small screens */
+  }
+  
+  .profile-avatar {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Mobile profile menu adjustments */
+  .profile-menu {
+    min-width: 200px;
+    right: -8px;
+  }
+  
+  .profile-header {
+    padding: 12px;
+  }
+  
+  .profile-menu-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .profile-info h4 {
+    font-size: 14px;
+  }
+  
+  .profile-info p {
+    font-size: 11px;
+  }
+  
+  .profile-menu-item {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  /* Mobile auth page adjustments */
+  .auth-container {
+    padding: 30px 20px;
+    margin: 10px;
+    max-width: calc(100vw - 40px); /* Ensures container fits on screen */
+  }
+  
+  .auth-header h1 {
+    font-size: 24px;
+  }
+  
+  .auth-logo {
+    height: 32px;
+  }
+  
+  /* Mobile form input adjustments */
+  .form-group input {
+    padding: 16px;
+    font-size: 16px; /* Prevents zoom on iOS devices */
+  }
+  
+  .radio-group {
+    flex-direction: column; /* Stack radio buttons vertically */
+    gap: 10px;
+  }
+  
+  .radio-label,
+  .checkbox-label {
+    min-height: 48px; /* Larger touch targets */
+    padding: 8px;
+  }
+  
+  /* Mobile profile page adjustments */
+  .profile-container {
+    padding: 20px 15px;
+  }
+  
+  .profile-header-section h1 {
+    font-size: 28px; /* Smaller heading on mobile */
+  }
+  
+  .profile-card {
+    padding: 30px 20px;
+  }
+  
+  .profile-card h2 {
+    font-size: 24px;
+  }
+  
+  .profile-avatar-large {
+    width: 80px; /* Smaller avatar on mobile */
+    height: 80px;
+  }
+  
+  .profile-details {
+    padding: 24px 20px;
+  }
+  
+  /* Mobile detail items stack vertically */
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px 0;
+  }
+  
+  .detail-item span {
+    text-align: left;
+    font-size: 16px;
+  }
+  
+  /* Mobile profile actions stack vertically */
+  .profile-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .edit-profile-btn,
+  .logout-btn {
+    width: 100%; /* Full width buttons on mobile */
+    min-height: 52px;
+  }
+  
+  /* Full-width mobile hamburger menu */
+  .popmenu {
+    width: 100%; /* Full width on very small screens */
+  }
+  
+  /* Mobile user info adjustments */
+  .mobile-user-info {
+    padding: 16px;
+  }
+  
+  .mobile-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .mobile-user-details h4 {
+    font-size: 14px;
+  }
+  
+  .mobile-user-details p {
+    font-size: 11px;
+  }
+  
+  /* Mobile menu item adjustments */
+  .men .nav-link,
+  .men .install-button {
+    padding: 16px 20px;
+    font-size: 14px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* VERY SMALL MOBILE - 480px and below
+   ========================================================================= */
+/* Additional adjustments for very small screens */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  .auth-header h1 {
+    font-size: 20px;
+  }
+  
+  .profile-header-section h1 {
+    font-size: 24px;
+  }
+  
+  .profile-card h2 {
+    font-size: 20px;
+  }
+  
+  .detail-item {
+    padding: 16px 0;
+  }
+}
+
+/* TOUCH DEVICE OPTIMIZATIONS
+   ========================================================================= */
+/* Special optimizations for devices with touch input */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for better usability */
+  .auth-submit-btn,
+  .social-btn,
+  .edit-profile-btn,
+  .logout-btn {
+    min-height: 52px;
+  }
+  
+  .form-group input {
+    min-height: 52px;
+    font-size: 16px; /* Prevents zoom on input focus */
+  }
+  
+  .radio-label,
+  .checkbox-label {
+    min-height: 52px;
+    padding: 12px 8px;
+  }
+}
+
+/* ANIMATIONS AND TRANSITIONS
+   ========================================================================= */
+/* Enhanced animation for profile menu */
+@keyframes profileMenuSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.profile-menu.active {
+  animation: profileMenuSlide 0.3s ease-out;
+}
+
+/* Z-INDEX MANAGEMENT
+   ========================================================================= */
+/* Ensures proper layering of interface elements */
+.appbar-right .user-options {
+  position: relative;
+}
+
+.profile-dropdown {
+  z-index: 1002; /* Above profile menu */
+}
+
+/* FINAL CLEANUP AND UTILITIES
+   ========================================================================= */
+/* Ensures all interactive elements have proper cursor and transitions */
+.signup-button,
+.login-button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.signup-button:hover,
+.login-button:hover {
+  transform: scale(1.04);
+}
+
+.signup-button:active,
+.login-button:active {
+  transform: scale(0.98); /* Click feedback */
+}
+
+/* Mobile popup menu button styling */
+.men .signup-button,
+.men .login-button {
+  background: none;
+  width: 100%;
+  text-align: center;
+}
