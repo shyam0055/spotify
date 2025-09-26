@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify - Artist</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/artist.css" />
+  </head>
+  <body>
+    <div class="artist-page">
+      <a href="dashboard.html" class="back-button"> &larr; Back to Home </a>
+
+      <div class="artist-header">
+        <img
+          src="assets/images/anirudh.png"
+          alt="Artist Image"
+          id="artistImage"
+          class="artist-image-header"
+        />
+        <div class="artist-details">
+          <h1 id="artistName">Artist Name</h1>
+          <div class="artist-socials">
+            <a
+              href="#"
+              id="instagramLink"
+              target="_blank"
+              class="social-link"
+              aria-label="Instagram"
+            >
+              <img src="assets/images/instagram.svg" alt="Instagram" />
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="artist-content">
+        <div class="artist-songs">
+          <h2>Popular</h2>
+          <ol id="songList" class="song-list">
+            <!-- Songs will be dynamically inserted here by JavaScript -->
+            <li class="song-item-loading">
+              <span>Loading songs...</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIDDEN AUDIO ELEMENT -->
+    <audio id="player" style="display: none"></audio>
+
+    <!-- Include the main script -->
+    <script src="script.js"></script>
+  </body>
+</html>

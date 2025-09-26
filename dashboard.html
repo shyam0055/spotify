@@ -338,22 +338,22 @@
 
           <!-- ARTISTS SECTION -->
           <div class="trendingartist">
-            <h3>Popular Artists</h3>
+            <h3 class="trdnow">Popular Artists</h3>
             <div class="profile">
               <div class="photo">
-                <a href="assets/images/anirudh.png">
+                <a href="artist.html?name=anirudh">
                   <img src="assets/images/anirudh.png" alt="Anirudh" />
                 </a>
                 <h3>Anirudh</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/arrahaman.png">
+                <a href="artist.html?name=ar_rahman">
                   <img src="assets/images/arrahaman.png" alt="Ar Rahamanh" />
                 </a>
                 <h3>Ar Rahamanh</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/balasubhramanyam .png">
+                <a href="artist.html?name=sp_balasubrahmanyam">
                   <img
                     src="assets/images/balasubhramanyam .png"
                     alt="Balasubhramanyam"
@@ -362,31 +362,31 @@
                 <h3>Balasubhramanyam</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/chitra.png">
+                <a href="artist.html?name=chitra">
                   <img src="assets/images/chitra.png" alt="Chitra" />
                 </a>
                 <h3>Chitra</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/dsp.png">
+                <a href="artist.html?name=dsp">
                   <img src="assets/images/dsp.png" alt="Dsp" />
                 </a>
                 <h3>DSP</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/keeravani.png">
+                <a href="artist.html?name=keeravani">
                   <img src="assets/images/keeravani.png" alt="keeravani" />
                 </a>
                 <h3>keeravani</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/ssthaman.png">
+                <a href="artist.html?name=ss_thaman">
                   <img src="assets/images/ssthaman.png" alt="SS Thaman" />
                 </a>
                 <h3>SS Thaman</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/billieeilish.png">
+                <a href="artist.html?name=billie_eilish">
                   <img
                     src="assets/images/billieeilish.png"
                     alt="billieeilish"
@@ -395,7 +395,7 @@
                 <h3>billieeilish</h3>
               </div>
               <div class="photo">
-                <a href="assets/images/justinbeiber.png">
+                <a href="artist.html?name=justin_bieber">
                   <img
                     src="assets/images/justinbeiber.png"
                     alt="justinbeiber"
@@ -467,104 +467,111 @@
     <!-- Include the music player JavaScript -->
     <script src="script.js"></script>
     <script>
-      
-// Load user data when page loads
-window.onload = function () {
-  loadUserData();
-};
+      // Load user data when page loads
+      window.onload = function () {
+        loadUserData();
+      };
 
-function loadUserData() {
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+      function loadUserData() {
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-  // If not logged in or no user data, redirect to login
-  if (!isLoggedIn || !userData) {
-    window.location.href = "index.html";
-    return;
-  }
+        // If not logged in or no user data, redirect to login
+        if (!isLoggedIn || !userData) {
+          window.location.href = "index.html";
+          return;
+        }
 
-  // Generate avatar with user's initials
-  const initials = userData.fullName
-    ? userData.fullName
-        .split(" ")
-        .map((n) => n[0])
-        .join("")
-        .toUpperCase()
-    : "U";
+        // Generate avatar with user's initials
+        const initials = userData.fullName
+          ? userData.fullName
+              .split(" ")
+              .map((n) => n[0])
+              .join("")
+              .toUpperCase()
+          : "U";
 
-  const avatarColors = ["#1db954", "#ff6b35", "#f7931e", "#bc5a94", "#00a8cc"];
-  const avatarColor =
-    avatarColors[Math.floor(Math.random() * avatarColors.length)];
+        const avatarColors = [
+          "#1db954",
+          "#ff6b35",
+          "#f7931e",
+          "#bc5a94",
+          "#00a8cc",
+        ];
+        const avatarColor =
+          avatarColors[Math.floor(Math.random() * avatarColors.length)];
 
-  // Update profile elements in main navbar
-  document.getElementById("userName").textContent = userData.fullName || "User";
-  document.getElementById("userFullName").textContent =
-    userData.fullName || "User";
-  document.getElementById("userEmail").textContent = userData.email || "";
+        // Update profile elements in main navbar
+        document.getElementById("userName").textContent =
+          userData.fullName || "User";
+        document.getElementById("userFullName").textContent =
+          userData.fullName || "User";
+        document.getElementById("userEmail").textContent = userData.email || "";
 
-  // Update mobile menu elements
-  document.getElementById("mobileUserName").textContent =
-    userData.fullName || "User";
-  document.getElementById("mobileUserEmail").textContent = userData.email || "";
+        // Update mobile menu elements
+        document.getElementById("mobileUserName").textContent =
+          userData.fullName || "User";
+        document.getElementById("mobileUserEmail").textContent =
+          userData.email || "";
 
-  // Create avatar elements for all locations
-  const avatarElements = [
-    document.getElementById("userAvatar"),
-    document.getElementById("userMenuAvatar"),
-    document.getElementById("mobileUserAvatar"),
-  ];
+        // Create avatar elements for all locations
+        const avatarElements = [
+          document.getElementById("userAvatar"),
+          document.getElementById("userMenuAvatar"),
+          document.getElementById("mobileUserAvatar"),
+        ];
 
-  avatarElements.forEach((avatar, index) => {
-    if (avatar) {
-      avatar.style.backgroundColor = avatarColor;
-      avatar.style.color = "white";
-      avatar.style.display = "flex";
-      avatar.style.alignItems = "center";
-      avatar.style.justifyContent = "center";
-      avatar.style.fontWeight = "bold";
-      avatar.style.borderRadius = "50%";
+        avatarElements.forEach((avatar, index) => {
+          if (avatar) {
+            avatar.style.backgroundColor = avatarColor;
+            avatar.style.color = "white";
+            avatar.style.display = "flex";
+            avatar.style.alignItems = "center";
+            avatar.style.justifyContent = "center";
+            avatar.style.fontWeight = "bold";
+            avatar.style.borderRadius = "50%";
 
-      // Different sizes for different avatars
-      if (index === 0) {
-        // userAvatar
-        avatar.style.fontSize = "14px";
-        avatar.style.width = "32px";
-        avatar.style.height = "32px";
-      } else if (index === 1) {
-        // userMenuAvatar
-        avatar.style.fontSize = "20px";
-        avatar.style.width = "48px";
-        avatar.style.height = "48px";
-      } else {
-        // mobileUserAvatar
-        avatar.style.fontSize = "16px";
-        avatar.style.width = "40px";
-        avatar.style.height = "40px";
+            // Different sizes for different avatars
+            if (index === 0) {
+              // userAvatar
+              avatar.style.fontSize = "14px";
+              avatar.style.width = "32px";
+              avatar.style.height = "32px";
+            } else if (index === 1) {
+              // userMenuAvatar
+              avatar.style.fontSize = "20px";
+              avatar.style.width = "48px";
+              avatar.style.height = "48px";
+            } else {
+              // mobileUserAvatar
+              avatar.style.fontSize = "16px";
+              avatar.style.width = "40px";
+              avatar.style.height = "40px";
+            }
+
+            avatar.textContent = initials;
+          }
+        });
       }
 
-      avatar.textContent = initials;
-    }
-  });
-}
+      function logout() {
+        localStorage.removeItem("userData");
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "index.html";
+      }
 
-function logout() {
-  localStorage.removeItem("userData");
-  localStorage.removeItem("isLoggedIn");
-  window.location.href = "index.html";
-}
+      function toggleMenu() {
+        const popupMenu = document.getElementById("popupMenu");
+        const menuToggle = document.getElementById("menuToggle");
 
-function toggleMenu() {
-  const popupMenu = document.getElementById("popupMenu");
-  const menuToggle = document.getElementById("menuToggle");
-
-  if (popupMenu.classList.contains("active")) {
-    popupMenu.classList.remove("active");
-    menuToggle.innerHTML = "&#9776;";
-  } else {
-    popupMenu.classList.add("active");
-    menuToggle.innerHTML = "&#10005;";
-  }
-}
+        if (popupMenu.classList.contains("active")) {
+          popupMenu.classList.remove("active");
+          menuToggle.innerHTML = "&#9776;";
+        } else {
+          popupMenu.classList.add("active");
+          menuToggle.innerHTML = "&#10005;";
+        }
+      }
     </script>
   </body>
 </html>

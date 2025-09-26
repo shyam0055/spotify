@@ -32,6 +32,8 @@ body {
 
   min-width: 300px;
   min-height: 300px;
+
+  
 }
 
 /* UTILITY CLASSES
@@ -376,6 +378,7 @@ body {
   padding-top: 64px;
   height: calc(100vh - 64px);
   display: flex;
+  gap: 20px
 }
 
 /* LIBRARY SIDEBAR
@@ -524,6 +527,7 @@ body {
   position: relative;
   height: 100vh;
   width: 75%;
+  left: o;
   overflow-y: hidden;
   box-sizing: border-box;
 }
@@ -535,7 +539,7 @@ body {
   gap: 10px;
   position: absolute;
   top: 20px;
-  left: 70px;
+  left: 0px;
   border-radius: 8px;
   height: 300px;
   width: 100%;
@@ -553,6 +557,7 @@ body {
 /* CONTENT CARDS LAYOUT
     ========================================================================= */
 .cards {
+  left: 0;
   display: flex;
   gap: 20px;
   width: max-content;
@@ -617,13 +622,13 @@ body {
 
 /* ARTIST PROFILE SECTION
     ========================================================================= */
-.trendingartist {
+/* .trendingartist {
   margin: 10px;
-}
+} */
 
 .profile {
   display: flex;
-  margin: 20px;
+  margin-top: 20px;
   padding: 5px;
   width: 210px;
   height: 300px;
@@ -1429,6 +1434,7 @@ body {
   }
 
   .music {
+    left: 0;
     width: 70%;
   }
 
@@ -1971,9 +1977,6 @@ body {
     width: 100%;
     box-sizing: border-box;
     height: auto; /* don’t force 100% */
-  }
-  .trendingartist h3 {
-    font-size: 35px;
   }
 
   .profile {
