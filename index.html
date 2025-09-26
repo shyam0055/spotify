@@ -10,7 +10,7 @@
     <!-- The small icon that appears in the browser tab -->
     <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml" />
     <!-- Link to our CSS file that makes everything look pretty -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="assets/css/dashboard.css" />
   </head>
   <body>
     <!-- POPUP MENU: This appears when you click the menu button on mobile -->
@@ -23,7 +23,9 @@
         <span class="separator">--------------</span>
         <!-- Buttons for user actions -->
         <button class="install-button">Install App</button>
-        <button class="signup-button" onclick="redirectToSignup()">Sign Up</button>
+        <button class="signup-button" onclick="redirectToSignup()">
+          Sign Up
+        </button>
         <button class="login-button" onclick="redirectToLogin()">Log in</button>
       </div>
     </div>
@@ -34,23 +36,31 @@
       <div class="appbar-left">
         <img src="assets/images/logo.svg" alt="spotify" class="logo" />
       </div>
-      
+
       <!-- Center: Home button and search bar -->
       <div class="appbar-center">
         <!-- Home button with house icon -->
         <a href="index.html" class="home-button" aria-label="Home">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1.5 1.5 0 0 1 1.5-1.5h4a1.5 1.5 0 0 1 1.5 1.5v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1-1.732V20a2 2 0 0 1-2 2h-5a1 1 0 0 1-1-1v-5h-2v5a1 1 0 0 1-1 1H4a2 2 0 0 1-2-2V7.577a2 2 0 0 1 1-1.732l7.5-4.33z" />
+            <path
+              d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1.5 1.5 0 0 1 1.5-1.5h4a1.5 1.5 0 0 1 1.5 1.5v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1-1.732V20a2 2 0 0 1-2 2h-5a1 1 0 0 1-1-1v-5h-2v5a1 1 0 0 1-1 1H4a2 2 0 0 1-2-2V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"
+            />
           </svg>
         </a>
-        
+
         <!-- Search box where users can type what they want to play -->
         <div class="search-container">
-          <input type="search" id="searchbar" placeholder="What do you want to play?" />
+          <input
+            type="search"
+            id="searchbar"
+            placeholder="What do you want to play?"
+          />
           <button class="search-button" aria-label="search">
             <!-- Magnifying glass icon -->
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z" />
+              <path
+                d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z"
+              />
             </svg>
           </button>
         </div>
@@ -64,14 +74,20 @@
           <a href="#" class="nav-link">Download</a>
           <span class="separator">|</span>
           <button class="install-button">Install App</button>
-          <button class="signup-button" onclick="redirectToSignup()">Sign Up</button>
-          <button class="login-button" onclick="redirectToLogin()">Log in</button>
+          <button class="signup-button" onclick="redirectToSignup()">
+            Sign Up
+          </button>
+          <button class="login-button" onclick="redirectToLogin()">
+            Log in
+          </button>
         </div>
       </div>
-      
+
       <!-- Mobile menu button (only shows on small screens) -->
       <div class="menubar">
-        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">&#9776;</div>
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+          &#9776;
+        </div>
       </div>
     </div>
 
@@ -84,7 +100,16 @@
           Your Library
           <button class="add-btn" aria-label="Add">
             <!-- Plus icon for adding new items -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
@@ -111,7 +136,12 @@
             <p id="current-artist">Select a song to start playing</p>
             <div class="now-playing-image">
               <!-- This image will show the album cover of current song -->
-              <img id="current-song-image" src="" alt="Current song" style="display: none" />
+              <img
+                id="current-song-image"
+                src=""
+                alt="Current song"
+                style="display: none"
+              />
             </div>
           </div>
         </div>
@@ -134,18 +164,24 @@
       <div class="music">
         <div class="trending">
           <h1 class="trdnow">Trending Now</h1>
-          
+
           <!-- ALBUM CARDS: These are the clickable album covers -->
           <div class="cards">
             <!-- Each card represents an album that users can click to play -->
             <div class="card" data-album="sanam teri kasam">
-              <a href="#" onclick="playAlbum('sanam teri kasam'); return false;">
-                <img src="assets/images/sanamterikasam.png" alt="Sanam Teri Kasam" />
+              <a
+                href="#"
+                onclick="playAlbum('sanam teri kasam'); return false;"
+              >
+                <img
+                  src="assets/images/sanamterikasam.png"
+                  alt="Sanam Teri Kasam"
+                />
               </a>
               <h3>Sanam Teri Kasam</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="coolie">
               <a href="#" onclick="playAlbum('coolie'); return false;">
                 <img src="assets/images/coolie.png" alt="Coolie" />
@@ -153,7 +189,7 @@
               <h3>Coolie</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="kushagara">
               <a href="#" onclick="playAlbum('kushagara'); return false;">
                 <img src="assets/images/findingher.png" alt="Finding Her" />
@@ -161,7 +197,7 @@
               <h3>Finding Her</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="jawani">
               <a href="#" onclick="playAlbum('jawani'); return false;">
                 <img src="assets/images/jawani.png" alt="Jawani" />
@@ -169,7 +205,7 @@
               <h3>Jawani</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="priya darshini">
               <a href="#" onclick="playAlbum('priya darshini'); return false;">
                 <img src="assets/images/kiliye.png" alt="Kiliye" />
@@ -177,7 +213,7 @@
               <h3>Kiliye</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="ranjhan">
               <a href="#" onclick="playAlbum('ranjhan'); return false;">
                 <img src="assets/images/ranjhan.png" alt="Ranjhan" />
@@ -185,7 +221,7 @@
               <h3>Ranjhan</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="hummarjayenge">
               <a href="#" onclick="playAlbum('hummarjayenge'); return false;">
                 <img src="assets/images/ashiq.png" alt="Hum Mar Jayenge" />
@@ -193,7 +229,7 @@
               <h3>Hum Mar Jayenge</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="sundari">
               <a href="#" onclick="playAlbum('sundari'); return false;">
                 <img src="assets/images/sundari.png" alt="Sundari" />
@@ -201,7 +237,7 @@
               <h3>Sundari</h3>
               <p><span>Various Artists</span></p>
             </div>
-            
+
             <div class="card" data-album="younggoat">
               <a href="#" onclick="playAlbum('younggoat'); return false;">
                 <img src="assets/images/younggoat.png" alt="Young Goat" />
@@ -230,7 +266,10 @@
               </div>
               <div class="photo">
                 <a href="assets/images/balasubhramanyam .png">
-                  <img src="assets/images/balasubhramanyam .png" alt="Balasubhramanyam" />
+                  <img
+                    src="assets/images/balasubhramanyam .png"
+                    alt="Balasubhramanyam"
+                  />
                 </a>
                 <h3>Balasubhramanyam</h3>
               </div>
@@ -260,13 +299,19 @@
               </div>
               <div class="photo">
                 <a href="assets/images/billieeilish.png">
-                  <img src="assets/images/billieeilish.png" alt="billieeilish" />
+                  <img
+                    src="assets/images/billieeilish.png"
+                    alt="billieeilish"
+                  />
                 </a>
                 <h3>billieeilish</h3>
               </div>
               <div class="photo">
                 <a href="assets/images/justinbeiber.png">
-                  <img src="assets/images/justinbeiber.png" alt="justinbeiber" />
+                  <img
+                    src="assets/images/justinbeiber.png"
+                    alt="justinbeiber"
+                  />
                 </a>
                 <h3>justinbeiber</h3>
               </div>
@@ -275,27 +320,58 @@
         </div>
 
         <!-- BOTTOM PLAYER BAR: Music controls -->
-        <div class="playbar" style="display: none;">
+        <div class="playbar" style="display: none">
           <!-- Progress bar and time display -->
           <div class="song-progress">
             <span id="currentTime">0:00</span>
-            <input type="range" id="progressBar" min="0" max="100" value="0" onchange="seekTo()" />
+            <input
+              type="range"
+              id="progressBar"
+              min="0"
+              max="100"
+              value="0"
+              onchange="seekTo()"
+            />
             <span id="duration">0:00</span>
           </div>
           <!-- Music control buttons -->
           <div class="playbuttons">
             <!-- Previous song button -->
-            <img src="assets/images/previous.svg" alt="⏮" id="previousBtn" onclick="previousSong()" style="cursor: pointer" />
+            <img
+              src="assets/images/previous.svg"
+              alt="⏮"
+              id="previousBtn"
+              onclick="previousSong()"
+              style="cursor: pointer"
+            />
             <!-- Play/Pause button (this is the main one) -->
-            <img src="assets/images/play.svg" alt="▶" id="playPauseBtn" onclick="togglePlayPause()" style="cursor: pointer" />
+            <img
+              src="assets/images/play.svg"
+              alt="▶"
+              id="playPauseBtn"
+              onclick="togglePlayPause()"
+              style="cursor: pointer"
+            />
             <!-- Next song button -->
-            <img src="assets/images/next.svg" alt="⏭" id="nextBtn" onclick="nextSong()" style="cursor: pointer" />
-            
+            <img
+              src="assets/images/next.svg"
+              alt="⏭"
+              id="nextBtn"
+              onclick="nextSong()"
+              style="cursor: pointer"
+            />
           </div>
           <!-- Volume control -->
-          <div class="volume-control" >
+          <div class="volume-control">
             <img src="assets/images/volume.svg" alt="🔊" />
-            <input type="range" id="volumeSlider" min="0" max="100" value="50" onchange="setVolume()" />
+            <input
+              type="range"
+              id="volumeSlider"
+              min="0"
+              max="100"
+              value="50"
+              onchange="setVolume()"
+            />
           </div>
         </div>
       </div>
@@ -311,7 +387,7 @@
         window.location.href = "signup.html";
       }
 
-      // Simple function to redirect user to login page  
+      // Simple function to redirect user to login page
       function redirectToLogin() {
         window.location.href = "login.html";
       }
@@ -339,7 +415,10 @@
         const menubar = document.querySelector(".menubar");
 
         // If click is outside menu area, close the menu
-        if (!menubar.contains(event.target) && !popupMenu.contains(event.target)) {
+        if (
+          !menubar.contains(event.target) &&
+          !popupMenu.contains(event.target)
+        ) {
           if (popupMenu.classList.contains("active")) {
             popupMenu.classList.remove("active");
             menuToggle.innerHTML = "&#9776;";
